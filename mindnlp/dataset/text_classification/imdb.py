@@ -160,7 +160,7 @@ def IMDB_Process(dataset, tokenizer, vocab, batch_size=64, max_len=500, \
     type_cast_op = transforms.TypeCast(mindspore.float32)
 
     dataset = dataset.map([tokenizer, lookup_op], 'text')
-    # dataset = dataset.map([type_cast_op], 'label')
+    dataset = dataset.map([type_cast_op], 'label')
     if bucket_boundaries is not None:
         if not isinstance(bucket_boundaries, list):
             raise ValueError(f"'bucket_boundaries' must be a list of int, but get {type(bucket_boundaries)}")
